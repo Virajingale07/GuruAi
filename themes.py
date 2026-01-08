@@ -20,82 +20,65 @@ def inject_theme_css(theme_name):
 
     css = f"""
     <style>
-        /* 1. MAIN CONTAINER & FONT */
+        /* 1. MAIN CONTAINER */
         .stApp {{
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', sans-serif;
             color: {theme['text']};
         }}
 
-        /* 2. SIDEBAR STYLING */
+        /* 2. SIDEBAR */
         [data-testid="stSidebar"] {{
             background-color: {theme['sidebar']};
             border-right: 1px solid #30363D;
         }}
 
-        [data-testid="stSidebar"] h1 {{
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #FFFFFF;
-            letter-spacing: -0.5px;
-            margin-bottom: 1rem;
-        }}
-
-        [data-testid="stSidebar"] p, [data-testid="stSidebar"] label {{
-            color: #8B949E; /* Muted text for sidebar labels */
-            font-size: 0.85rem;
-            font-weight: 500;
-        }}
-
-        /* 3. BUTTONS (SaaS Style) */
+        /* 3. BUTTONS CUSTOMIZATION (The "SaaS" Look) */
+        /* Standard buttons */
         .stButton button {{
-            background-color: {theme['primary']};
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }}
-
-        .stButton button:hover {{
-            background-color: #2563EB; /* Slightly darker blue on hover */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            transform: translateY(-1px);
-        }}
-
-        /* Secondary/Outline Buttons (if any) */
-        div[data-testid="stForm"] .stButton button {{
-             width: 100%;
-        }}
-
-        /* 4. CHAT MESSAGE STYLING */
-        /* User Message Bubble */
-        [data-testid="stChatMessage"]:nth-child(odd) {{
             background-color: transparent;
-        }}
-
-        /* AI Message Bubble (Subtle highlight) */
-        [data-testid="stChatMessage"]:nth-child(even) {{
-            background-color: #161B22;
-            border: 1px solid #30363D;
+            color: {theme['primary']};
+            border: 1px solid {theme['primary']};
             border-radius: 8px;
-            padding: 1rem;
+            font-weight: 500;
+            padding: 0.4rem 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
         }}
 
-        /* 5. METRIC CARDS & HEADERS */
-        h1, h2, h3 {{
-            color: #FFFFFF;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+        /* Hover effect: Fill with color */
+        .stButton button:hover {{
+            background-color: {theme['primary']};
+            color: white !important;
+            border: 1px solid {theme['primary']};
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }}
 
-        /* 6. STATUS CONTAINERS (Success, Error, Info) */
-        .stAlert {{
-            border-radius: 6px;
+        /* Red Logout Button Styling (Targets the specific button containing 'Logout') */
+        /* Note: Streamlit doesn't give IDs easily, so we use a style trick or manual placement */
+
+        /* 4. CHAT INPUT */
+        [data-testid="stChatInput"] {{
+            border-radius: 12px;
             border: 1px solid #30363D;
+            background-color: #161B22;
         }}
 
+        /* 5. DATA CENTER UPLOADER */
+        [data-testid="stFileUploader"] {{
+            background-color: #161B22;
+            border: 1px dashed #30363D;
+            border-radius: 10px;
+            padding: 10px;
+        }}
+
+        /* 6. SCROLLBARS */
+        ::-webkit-scrollbar {{
+            width: 6px;
+        }}
+        ::-webkit-scrollbar-thumb {{
+            background: #30363D;
+            border-radius: 10px;
+        }}
     </style>
     """
     st.markdown(css, unsafe_allow_html=True)
