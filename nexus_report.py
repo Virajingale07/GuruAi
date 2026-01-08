@@ -6,7 +6,7 @@ import os
 class PDFReport(FPDF):
     def header(self):
         self.set_font('Arial', 'B', 12)
-        self.cell(0, 10, 'Nexus AI - Session Report', 0, 1, 'C')
+        self.cell(0, 10, 'Guru AI - Session Report', 0, 1, 'C')
         self.ln(5)
 
     def footer(self):
