@@ -2,7 +2,7 @@ import streamlit as st
 
 # --- PROFESSIONAL THEME DEFINITION ---
 THEMES = {
-    "Nexus Enterprise": {
+    "GuruAi Enterprise": {
         "primary": "#3B82F6",  # Professional Royal Blue
         "background": "#0E1117",  # Deep Charcoal (Standard Streamlit Dark)
         "sidebar": "#161B22",  # Slightly lighter dark for sidebar
@@ -16,7 +16,7 @@ THEMES = {
 
 def inject_theme_css(theme_name):
     """Injects professional CSS styles into the app."""
-    theme = THEMES.get(theme_name, THEMES["Nexus Enterprise"])
+    theme = THEMES.get(theme_name, THEMES["GuruAi Enterprise"])
 
     css = f"""
     <style>
